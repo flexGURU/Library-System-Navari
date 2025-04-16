@@ -1,0 +1,187 @@
+<div class="w-11/12 flex flex-col mx-auto">
+  <div class="my-10 flex justify-between items-center">
+    <h1 class="text-2xl font-bold text-white">Member Management</h1>
+    <button
+      pButton
+      label="Add Member"
+      icon="pi pi-plus"
+      (click)="openMemberDialog()"
+    ></button>
+  </div>
+
+  <p-toast></p-toast>
+  <p-confirmDialog
+    header="Confirmation"
+    icon="pi pi-exclamation-triangle"
+  ></p-confirmDialog>
+
+  <p-table
+    [value]="members()"
+    [rows]="10"
+    [rowsPerPageOptions]="[10, 25, 50]"
+    styleClass="p-datatable-sm"
+    [loading]="loading"
+    dataKey="id"
+    responsiveLayout="scroll"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Outstanding Debt (KES)</th>
+        <th>Actions</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-member>
+      <tr>
+        <td>{{ member.first_name }}</td>
+        <td>{{ member.last_name }}</td>
+        <td>{{ member.email }}</td>
+        <td>{{ member.phone }}</td>
+        <td [ngClass]="{ 'text-red-500 ': member.outstanding_debt > 500 }">
+          {{ member.outstanding_debt }}
+        </td>
+        <td>
+          <button
+            pButton
+            icon="pi pi-pencil"
+            class="p-button-text p-button-sm mr-2"
+            (click)="editMember(member)"
+          ></button>
+          <button
+            pButton
+            icon="pi pi-trash"
+            class="p-button-text p-button-danger p-button-sm"
+            (click)="confirmDelete(member)"
+          ></button>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="6" class="text-center">No members found.</td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+  <p-dialog
+    [(visible)]="memberDialog"
+    [style]="{ width: '450px' }"
+    header="Member Details"
+    [modal]="true"
+  >
+    <form [formGroup]="memberForm" *ngIf="memberForm">
+      <div class="flex flex-col gap-4 mt-2">
+        <div class="field">
+          <label for="name" class="font-bold block mb-1">First Name</label>
+          <input
+            pInputText
+            id="name"
+            formControlName="first_name"
+            class="w-full"
+          />
+          <small
+            *ngIf="
+              memberForm.get('first_name')?.invalid &&
+              memberForm.get('first_name')?.touched
+            "
+            class="text-red-500"
+          >
+            First Name is required
+          </small>
+        </div>
+        <div class="field">
+          <label for="name" class="font-bold block mb-1">Last Name</label>
+          <input
+            pInputText
+            id="name"
+            formControlName="last_name"
+            class="w-full"
+          />
+          <small
+            *ngIf="
+              memberForm.get('last_name')?.invalid &&
+              memberForm.get('last_name')?.touched
+            "
+            class="text-red-500"
+          >
+            Last Name is required
+          </small>
+        </div>
+
+        <div class="field">
+          <label for="email" class="font-bold block mb-1">Email</label>
+          <input
+            pInputText
+            id="email"
+            formControlName="email"
+            class="w-full"
+            type="email"
+          />
+          <small
+            *ngIf="
+              memberForm.get('email')?.invalid &&
+              memberForm.get('email')?.touched
+            "
+            class="text-red-500"
+          >
+            Valid email is required
+          </small>
+        </div>
+
+        <div class="field">
+          <label for="phone" class="font-bold block mb-1">Phone</label>
+          <input pInputText id="phone" formControlName="phone" class="w-full" />
+          <small
+            *ngIf="
+              memberForm.get('phone')?.invalid &&
+              memberForm.get('phone')?.touched
+            "
+            class="text-red-500"
+          >
+            Phone is required
+          </small>
+        </div>
+
+        <div class="field">
+          <label for="name" class="font-bold block mb-1"
+            >Outstanding Debt</label
+          >
+          <input
+            pInputText
+            id="name"
+            formControlName="outstanding_debt"
+            class="w-full"
+          />
+          <small
+            *ngIf="
+              memberForm.get('outstanding_debt')?.invalid &&
+              memberForm.get('outstanding_debt')?.touched
+            "
+            class="text-red-500"
+          >
+            Outstanding Debt is required
+          </small>
+        </div>
+      </div>
+    </form>
+    <ng-template pTemplate="footer">
+      <button
+        pButton
+        label="Cancel"
+        icon="pi pi-times"
+        class="p-button-text"
+        (click)="memberDialog = false"
+      ></button>
+      <button
+        pButton
+        label="Save"
+        icon="pi pi-check"
+        (click)="saveMember()"
+        [disabled]="memberForm.invalid"
+      ></button>
+    </ng-template>
+  </p-dialog>
+</div>

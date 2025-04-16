@@ -1,0 +1,96 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:TRANS-{####}",
+ "creation": "2025-04-13 08:05:37.364965",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "book",
+  "member",
+  "date_issued",
+  "date_due",
+  "date_returned",
+  "status",
+  "rent_fee"
+ ],
+ "fields": [
+  {
+   "fieldname": "book",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Book",
+   "options": "Book",
+   "reqd": 1
+  },
+  {
+   "fieldname": "member",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Member",
+   "options": "Member",
+   "reqd": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "date_issued",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date Issued",
+   "reqd": 1
+  },
+  {
+   "fieldname": "date_due",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date Due",
+   "reqd": 1
+  },
+  {
+   "fieldname": "date_returned",
+   "fieldtype": "Date",
+   "label": "Date Returned"
+  },
+  {
+   "default": "Issued",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Issued\nReturned\nOverdue",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "rent_fee",
+   "fieldtype": "Float",
+   "label": "Rent Fee"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-04-15 22:30:00.331682",
+ "modified_by": "Administrator",
+ "module": "Library",
+ "name": "Transaction",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}
