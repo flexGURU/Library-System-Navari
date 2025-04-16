@@ -1,3 +1,11 @@
 {
-  "rewrites": [{ "source": "/(.*)", "destination": "/" }]
-}
+    "version": 2,
+    "buildCommand": "cd library_management/frontend/library-system && npm install && npm run build",
+    "outputDirectory": "library_management/frontend/library-system/dist",
+    "routes": [
+      { "handle": "filesystem" },
+      { "src": "/assets/(.*)", "dest": "/assets/$1" },
+      { "src": "/(.*).(js|css|ico|json)", "dest": "/$1.$2" },
+      { "src": "/(.*)", "dest": "/index.html" }
+    ]
+  }
