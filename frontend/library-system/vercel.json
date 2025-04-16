@@ -2,8 +2,7 @@
     "version": 2,
     "builds": [
       {
-        "src": "angular.json",
-        "use": "@vercel/angular"
+        "src": "angular.json"
       }
     ],
     "routes": [
