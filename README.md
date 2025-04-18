@@ -3,7 +3,6 @@
 A complete library management solution built with Frappe (Python backend) and Angular (frontend) that handles books, members, and transactions with business logic enforcement.
 ## System Demonstration
 
-<<<<<<< HEAD
 <iframe 
     src="https://drive.google.com/file/d/1R96uzbvD_Q7PHi2pJ_vn0l1KLKg_hMgL/preview" 
     width="640" 
@@ -11,9 +10,7 @@ A complete library management solution built with Frappe (Python backend) and An
     allow="autoplay"
     style="border:none;"
 ></iframe>
-=======
 
->>>>>>> 98ed424124b0795670e99a7eadc3d373ba03211b
 ## System Architecture
 
 ## Features
