@@ -77,7 +77,9 @@ sequenceDiagram
     Angular->>+Frappe: POST /issue_book
     Frappe->>+Database: Check member debt
     Database-->>-Frappe: Debt amount
-    Frappe->>Angular: Success/Error response
+    Frappe->>Angular: Success/Error response```
+
+
 ![dashboard](https://github.com/user-attachments/assets/2c9561e3-8b20-4949-962d-620510fbb230)
 ![book](https://github.com/user-attachments/assets/9b2743d2-754e-4481-adc7-6afb60b20849)
 ![member](https://github.com/user-attachments/assets/a765158d-b01b-4c08-b26a-1f29a99b149e)
