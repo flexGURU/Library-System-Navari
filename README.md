@@ -1,15 +1,15 @@
 # Library Management System
 
 A complete library management solution built with Frappe (Python backend) and Angular (frontend) that handles books, members, and transactions with business logic enforcement.
-## System Demonstration
+## System Demonstration 📹
 
-<iframe 
-    src="https://drive.google.com/file/d/1R96uzbvD_Q7PHi2pJ_vn0l1KLKg_hMgL/preview" 
-    width="640" 
-    height="480" 
-    allow="autoplay"
-    style="border:none;"
-></iframe>
+[![Watch Library System Demo](https://img.shields.io/badge/▶_Watch_Full_Demo_Video-4285F4?style=for-the-badge&logo=google-drive&logoColor=white)](https://drive.google.com/file/d/1R96uzbvD_Q7PHi2pJ_vn0l1KLKg_hMgL/view?usp=sharing)
+
+**Features shown in demo:**
+- Book issuing workflow
+- Member debt validation
+- Transaction processing
+- Responsive UI interactions
 
 ## System Architecture
 
