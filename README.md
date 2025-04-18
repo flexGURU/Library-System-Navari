@@ -1,7 +1,15 @@
 # Library Management System
 
 A complete library management solution built with Frappe (Python backend) and Angular (frontend) that handles books, members, and transactions with business logic enforcement.
+## System Demonstration
 
+<iframe 
+    src="https://drive.google.com/file/d/1R96uzbvD_Q7PHi2pJ_vn0l1KLKg_hMgL/preview" 
+    width="640" 
+    height="480" 
+    allow="autoplay"
+    style="border:none;"
+></iframe>
 ## System Architecture
 
 ## Features
