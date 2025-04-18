@@ -3,6 +3,7 @@
 A complete library management solution built with Frappe (Python backend) and Angular (frontend) that handles books, members, and transactions with business logic enforcement.
 ## System Demonstration
 
+<<<<<<< HEAD
 <iframe 
     src="https://drive.google.com/file/d/1R96uzbvD_Q7PHi2pJ_vn0l1KLKg_hMgL/preview" 
     width="640" 
@@ -10,6 +11,9 @@ A complete library management solution built with Frappe (Python backend) and An
     allow="autoplay"
     style="border:none;"
 ></iframe>
+=======
+
+>>>>>>> 98ed424124b0795670e99a7eadc3d373ba03211b
 ## System Architecture
 
 ## Features
@@ -29,6 +33,10 @@ A complete library management solution built with Frappe (Python backend) and An
 - Automatic status updates
 - Rent fee calculation
 - Debt enforcement
+
+## Schema
+![schema](https://github.com/user-attachments/assets/8e3baa70-1ecd-4388-bfcc-87ba52f4b092)
+
 
 ## API Documentation
 
