@@ -1,41 +1,67 @@
-### Library
+# Library Management System
 
-MANAGEMANT 
+A complete library management solution built with Frappe (Python backend) and Angular (frontend) that handles books, members, and transactions with business logic enforcement.
 
-### Installation
+## System Architecture
 
-You can install this app using the [bench](https://github.com/frappe/bench) CLI:
+## Features
 
-```bash
-cd $PATH_TO_YOUR_BENCH
-bench get-app $URL_OF_THIS_REPO --branch develop
-bench install-app library_management
-```
+### 📚 Book Management
+- CRUD operations for books
+- Track inventory (quantity/available quantity)
+- Search by title/author
 
-### Contributing
+### 👥 Member Management
+- Member registration and management
+- Debt tracking (with KES 500 limit)
+- Contact information storage
 
-This app uses `pre-commit` for code formatting and linting. Please [install pre-commit](https://pre-commit.com/#installation) and enable it for this repository:
+### 🔄 Transaction Management
+- Book issuing/returning
+- Automatic status updates
+- Rent fee calculation
+- Debt enforcement
 
-```bash
-cd apps/library_management
-pre-commit install
-```
+## API Documentation
 
-Pre-commit is configured to use the following tools for checking and formatting your code:
+### Book Endpoints
 
-- ruff
-- eslint
-- prettier
-- pyupgrade
-### CI
+| Method | Endpoint | Description | Parameters |
+|--------|----------|-------------|------------|
+| `GET` | `/api/method/library_management.book.get_book` | Get all books or specific book | `book_name` (optional) |
+| `POST` | `/api/method/library_management.book.create_book` | Create new book | `title`, `author`, `isbn`, `publisher`, `quantity` |
+| `PUT` | `/api/method/library_management.book.update_book` | Update book | `book_name`, `title`/`author`/`isbn`/`publisher`/`quantity` |
+| `DELETE` | `/api/method/library_management.book.delete_book` | Delete book | `book_name` |
 
-This app can use GitHub Actions for CI. The following workflows are configured:
+### Member Endpoints
 
-- CI: Installs this app and runs unit tests on every push to `develop` branch.
-- Linters: Runs [Frappe Semgrep Rules](https://github.com/frappe/semgrep-rules) and [pip-audit](https://pypi.org/project/pip-audit/) on every pull request.
+| Method | Endpoint | Description | Parameters |
+|--------|----------|-------------|------------|
+| `GET` | `/api/method/library_management.member.get_members` | Get all members or specific member | `email` (optional) |
+| `POST` | `/api/method/library_management.member.create_member` | Create new member | `first_name`, `last_name`, `email`, `phone` |
+| `PUT` | `/api/method/library_management.member.update_member` | Update member | `member_id`, `first_name`/`last_name`/`email`/`phone`/`outstanding_debt` |
+| `DELETE` | `/api/method/library_management.member.delete_member` | Delete member | `member_id` |
+
+### Transaction Endpoints
+
+| Method | Endpoint | Description | Parameters |
+|--------|----------|-------------|------------|
+| `GET` | `/api/method/library_management.transaction.get_transactions` | Get all transactions or specific | `transaction_id` (optional) |
+| `POST` | `/api/method/library_management.transaction.issue_book` | Issue book to member | `book_name`, `email` |
+| `POST` | `/api/method/library_management.transaction.return_book` | Return book | `transaction_id`, `rent_fee` |
+| `GET` | `/api/method/library_management.transaction.search_books` | Search books | `author` or `title` |
+
+## Business Rules
+
+1. **Debt Limit**: Members cannot borrow books if outstanding debt > KES 500
+   ```python
+   if member.outstanding_debt > 500:
+       return {"message": "Member has reached debt limit of KES 500"}```
 
 
-### License
-
-mit
-# Library-System-Navari
+```mermaid
+sequenceDiagram
+    Angular->>+Frappe: POST /issue_book
+    Frappe->>+Database: Check member debt
+    Database-->>-Frappe: Debt amount
+    Frappe->>Angular: Success/Error response
